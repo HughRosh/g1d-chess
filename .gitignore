@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# ROS build artifacts
+build/
+devel/
+install/
+log/
+
+# Python environment files
+.env
+
+# Large recordings and logs
+*.bag
+*.db3
+*.log
