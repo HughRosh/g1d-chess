@@ -1,5 +1,13 @@
+absl-py==2.5.0
 chess==1.11.2
+etils==1.14.0
+fsspec==2026.6.0
+glfw==2.10.0
+mujoco==3.10.0
 numpy==2.5.1
 opencv-python==5.0.0.93
+PyOpenGL==3.1.10
 python-chess==1.999
 PyYAML==6.0.3
+typing_extensions==4.16.0
+zipp==4.1.0
