@@ -1,6 +1,6 @@
 robot:
-  name: G1-D
-  urdf: simulation/urdf/g1_d_dex1_1.urdf
+  name: G1-D Dual Dex1_1 Hybrid
+  urdf: simulation/urdf/g1_d_with_dex1_1_hybrid.urdf
 
   arm:
     active: right
