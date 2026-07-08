@@ -1,0 +1,8 @@
+table:
+  height_m: 0.7874
+  estimate_height: false
+
+  size_x_m: 1.20
+  size_y_m: 0.80
+  thickness_m: 0.04
+  position_xy_m: [0.55, 0.0]
