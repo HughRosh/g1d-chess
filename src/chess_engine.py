@@ -1,10 +1,13 @@
 import chess
 
-def get_test_move():
-    board = chess.Board()
+def choose_move(board):
+    """
+    Temporary move chooser.
+    Later this will call Stockfish.
+    """
     move = chess.Move.from_uci("e2e4")
 
     if move in board.legal_moves:
-        board.push(move)
+        return move
 
-    return board.fen(), move.uci()
+    return next(iter(board.legal_moves))
