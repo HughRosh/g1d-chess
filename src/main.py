@@ -3,15 +3,17 @@ from chess_engine import choose_move
 from board_geometry import move_to_pick_place
 from arm_planner import make_pick_place_motion
 from robot_controller import execute_motion
+from utils import load_config
 
 def main():
+    config = load_config("configs/chess.yaml")
+
     board = detect_board_state()
     move = choose_move(board)
-
     board.push(move)
 
-    plan = move_to_pick_place(move.uci())
-    motion = make_pick_place_motion(plan)
+    plan = move_to_pick_place(move.uci(), config)
+    motion = make_pick_place_motion(plan, config)
 
     print("G1-D Chess")
     print(f"Chosen move: {move.uci()}")
