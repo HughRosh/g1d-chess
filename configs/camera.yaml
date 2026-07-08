@@ -1,0 +1,19 @@
+cameras:
+  main:
+    type: mac_webcam
+    index: 0
+    role: board_detection
+
+  left_hand:
+    type: g1_hand_camera
+    index: null
+    role: grasp_alignment
+
+  right_hand:
+    type: g1_hand_camera
+    index: null
+    role: grasp_alignment
+
+depth:
+  enabled: false
+  source: null

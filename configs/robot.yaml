@@ -1,0 +1,18 @@
+robot:
+  model: unitree_g1_d
+  dry_run: true
+  real_robot_enabled: false
+
+workspace:
+  min_x_m: -0.50
+  max_x_m: 0.50
+  min_y_m: -0.50
+  max_y_m: 0.50
+  min_z_m: 0.02
+  max_z_m: 0.60
+
+safety:
+  require_board_detected: true
+  require_grasp_verification: true
+  require_place_verification: true
+  require_collision_check: true
