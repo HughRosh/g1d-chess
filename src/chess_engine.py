@@ -1,13 +1,23 @@
 import chess
+import chess.engine
 
-def choose_move(board):
+def choose_move(board, stockfish_path=None, time_limit=0.1):
     """
-    Temporary move chooser.
-    Later this will call Stockfish.
-    """
-    move = chess.Move.from_uci("e2e4")
+    Choose a legal chess move.
 
-    if move in board.legal_moves:
-        return move
+    If stockfish_path is provided, use Stockfish.
+    Otherwise, use a simple fallback move.
+    """
+    if stockfish_path:
+        try:
+            with chess.engine.SimpleEngine.popen_uci(stockfish_path) as engine:
+                result = engine.play(board, chess.engine.Limit(time=time_limit))
+                return result.move
+        except Exception as e:
+            print(f"Stockfish unavailable, using fallback move: {e}")
+
+    preferred = chess.Move.from_uci("e2e4")
+    if preferred in board.legal_moves:
+        return preferred
 
     return next(iter(board.legal_moves))

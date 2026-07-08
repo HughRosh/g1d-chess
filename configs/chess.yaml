@@ -6,3 +6,7 @@ board:
 motion:
   safe_z_m: 0.20
   pick_z_m: 0.03
+
+engine:
+  stockfish_path: null
+  time_limit_s: 0.1

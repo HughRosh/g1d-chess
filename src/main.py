@@ -9,7 +9,14 @@ def main():
     config = load_config("configs/chess.yaml")
 
     board = detect_board_state()
-    move = choose_move(board)
+
+    engine_cfg = config.get("engine", {})
+    move = choose_move(
+        board,
+        stockfish_path=engine_cfg.get("stockfish_path"),
+        time_limit=engine_cfg.get("time_limit_s", 0.1),
+    )
+
     board.push(move)
 
     plan = move_to_pick_place(move.uci(), config)
