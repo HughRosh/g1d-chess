@@ -26,4 +26,7 @@ log/
 # Large recordings and logs
 *.bag
 *.db3
-*.log
+*.log*.egg-info/
+__pycache__/
+*.pyc
+.venv/
