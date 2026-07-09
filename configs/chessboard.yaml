@@ -1,0 +1,15 @@
+board:
+  square_size_m: 0.05
+  approach_height_m: 0.10
+  pick_height_m: 0.02
+
+aruco:
+  dictionary: DICT_4X4_50
+  marker_ids:
+    a1: 10
+    h1: 11
+    a8: 12
+    h8: 13
+
+camera:
+  index: 0

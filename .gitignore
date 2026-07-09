@@ -4,3 +4,47 @@ __pycache__/
 .DS_Store
 *.log
 logs/
+
+# model weights
+*.pt
+*.onnx
+*.engine
+
+# generated/debug images
+*.jpg
+*.jpeg
+*.png
+
+# datasets / external downloads
+datasets/
+external/
+
+# python/cache
+__pycache__/
+*.pyc
+.DS_Store
+
+# local env
+.venv/
+
+# model weights
+*.pt
+*.onnx
+*.engine
+
+# generated/debug images
+*.jpg
+*.jpeg
+*.png
+
+# datasets / external downloads
+datasets/
+external/
+
+# python/cache
+__pycache__/
+*.pyc
+.DS_Store
+
+# local env
+.venv/
