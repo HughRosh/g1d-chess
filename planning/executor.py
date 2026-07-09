@@ -11,6 +11,12 @@ def execute_commands(robot, commands):
             joint_index, delta = cmd.target
             robot.move_joint(joint_index, delta, seconds=cmd.seconds)
 
+        elif cmd.action == "move_pose":
+            print("[SKIP] move_pose requires IK, not implemented yet")
+
+        elif cmd.action == "move_xyz":
+            print("[SKIP] move_xyz is deprecated; use move_pose")
+
         elif cmd.action == "open_gripper":
             robot.open_gripper()
             time.sleep(cmd.seconds)
@@ -21,9 +27,6 @@ def execute_commands(robot, commands):
 
         elif cmd.action == "home":
             robot.home()
-
-        elif cmd.action == "move_xyz":
-            print("[SKIP] move_xyz requires IK, not implemented yet")
 
         else:
             raise ValueError(f"Unknown command action: {cmd.action}")
