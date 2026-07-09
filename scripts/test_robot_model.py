@@ -1,26 +1,18 @@
-import sys
+#!/usr/bin/env python3
+
 from pathlib import Path
+import sys
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
-from robot.model import RobotModel
-from src.utils import load_config
+from robot.model.g1d_model import *
 
+print("Right arm:")
+for joint in RIGHT_ARM:
+    print(" ", joint)
 
-def main():
-    config = load_config("configs/robot.yaml")
-    robot = RobotModel(config["robot"]["urdf"])
+print()
 
-    print(f"Robot name: {robot.robot_name()}")
-
-    print("\nRight arm joints:")
-    for joint in robot.right_arm_joints():
-        print(joint)
-
-    print("\nDex1/gripper joints:")
-    for joint in robot.dex1_joints():
-        print(joint)
-
-
-if __name__ == "__main__":
-    main()
+print("Left arm:")
+for joint in LEFT_ARM:
+    print(" ", joint)
