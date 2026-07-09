@@ -2,7 +2,14 @@
 
 from dataclasses import dataclass
 
-from apps.chess.board_geometry import Point3D
+from apps.chess.board_geometry import Point3D, Vector3D
+
+
+@dataclass(frozen=True)
+class EndEffectorOrientation:
+    name: str
+    approach_axis: Vector3D
+    wrist_parallel_axis: Vector3D
 
 
 @dataclass(frozen=True)
@@ -10,6 +17,7 @@ class ManipulationWaypoint:
     name: str
     position: Point3D
     gripper_closed: bool
+    orientation: EndEffectorOrientation
 
 
 @dataclass(frozen=True)
