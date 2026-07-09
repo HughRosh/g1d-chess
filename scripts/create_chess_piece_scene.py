@@ -103,7 +103,13 @@ def main():
 
 '''
 
-    xml += '''  </worldbody>
+    xml += '''    <body name="gripper_marker" pos="0.25 -0.35 1.05">
+      <joint name="gripper_marker_free" type="free"/>
+      <geom type="sphere" size="0.025" rgba="0.1 0.4 1.0 1"/>
+      <geom type="capsule" fromto="0 0 0 0 0 -0.10" size="0.01" rgba="0.1 0.4 1.0 1"/>
+    </body>
+
+  </worldbody>
 </mujoco>
 '''
 

@@ -19,8 +19,10 @@ def square_to_xyz(square, scene):
 
     square_size = board["size_m"] / 8.0
 
-    x = board["x_m"] + (file_i - 3.5) * square_size
-    y = board["y_m"] + (rank_i - 3.5) * square_size
+    # Board rotated 90 degrees so the robot plays from the side.
+    # Files now run along robot Y; ranks run along robot X.
+    x = board["x_m"] + (rank_i - 3.5) * square_size
+    y = board["y_m"] + (file_i - 3.5) * square_size
     z = table["height_m"] + board["thickness_m"]
 
     return x, y, z
@@ -33,8 +35,8 @@ def make_chess_move_plan(move_uci, scene):
     fx, fy, fz = square_to_xyz(from_square, scene)
     tx, ty, tz = square_to_xyz(to_square, scene)
 
-    hover_offset = 0.15
-    grasp_offset = 0.03
+    hover_offset = 0.36
+    grasp_offset = 0.22
 
     return [
         move_xyz(fx, fy, fz + hover_offset, note=f"hover above {from_square}"),

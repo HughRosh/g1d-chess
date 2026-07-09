@@ -17,6 +17,25 @@ class G1DKinematics:
         self.ee_frame_name = end_effector_frame
         self.ee_frame_id = self.model.getFrameId(self.ee_frame_name)
 
+
+    def right_arm_q_indices(self):
+        names = [
+            "right_shoulder_pitch_joint",
+            "right_shoulder_roll_joint",
+            "right_shoulder_yaw_joint",
+            "right_elbow_joint",
+            "right_wrist_roll_joint",
+            "right_wrist_pitch_joint",
+            "right_wrist_yaw_joint",
+        ]
+
+        idx = []
+        for name in names:
+            jid = self.model.getJointId(name)
+            idx.append(self.model.idx_qs[jid])
+
+        return idx
+
     def neutral_q(self):
         return pin.neutral(self.model)
 
@@ -63,10 +82,17 @@ class G1DKinematics:
                 pin.ReferenceFrame.LOCAL,
             )
 
-            dq = J.T @ np.linalg.solve(
-                J @ J.T + damping * np.eye(6),
+            arm_idx = self.right_arm_q_indices()
+            J_arm = J[:, arm_idx]
+
+            dq_arm = J_arm.T @ np.linalg.solve(
+                J_arm @ J_arm.T + damping * np.eye(6),
                 err,
             )
+
+            dq = np.zeros(self.model.nv)
+            for k, qi in enumerate(arm_idx):
+                dq[qi] = dq_arm[k]
 
             q = pin.integrate(self.model, q, step_scale * dq)
 

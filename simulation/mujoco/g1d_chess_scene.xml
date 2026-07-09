@@ -1,0 +1,34 @@
+<mujoco model="g1d_chess_scene">
+  <compiler angle="radian" meshdir="../urdf/meshes"/>
+  <option timestep="0.002" gravity="0 0 -9.81"/>
+
+  <asset>
+    <material name="table_mat" rgba="0.32 0.16 0.07 1"/>
+    <material name="white_piece" rgba="0.95 0.86 0.65 1"/>
+  </asset>
+
+  <worldbody>
+    <light pos="0 0 3"/>
+    <geom name="floor" type="plane" size="5 5 0.1"/>
+
+    <body name="table" pos="0.454 0 0.73">
+      <geom type="box" size="0.6 0.4 0.02" material="table_mat"/>
+    </body>
+
+    <body name="board" pos="0.274 0 0.756">
+      <geom name="board_base" type="box" pos="0 0 0.002" size="0.205 0.205 0.004" rgba="0.05 0.05 0.05 1"/>
+    </body>
+
+    <body name="piece_e2" pos="0.299 -0.125 0.7895">
+      <joint name="piece_e2_free" type="free"/>
+      <geom type="cylinder" size="0.018 0.0275" material="white_piece"/>
+      <geom type="sphere" pos="0 0 0.0275" size="0.0144" material="white_piece"/>
+    </body>
+
+    <body name="gripper_marker" pos="0.299 -0.125 0.97">
+      <joint name="gripper_marker_free" type="free"/>
+      <geom type="sphere" size="0.025" rgba="0.1 0.4 1.0 1"/>
+      <geom type="capsule" fromto="0 0 0 0 0 -0.10" size="0.01" rgba="0.1 0.4 1.0 1"/>
+    </body>
+  </worldbody>
+</mujoco>
