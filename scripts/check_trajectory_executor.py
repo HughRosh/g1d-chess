@@ -22,7 +22,7 @@ q_goal = make_full_body_target_from_arm_targets(
 trajectory = linear_joint_trajectory(
     q_start=q_start,
     q_goal=q_goal,
-    duration=0.2,
+    duration=1.0,
     dt=0.05,
 )
 
