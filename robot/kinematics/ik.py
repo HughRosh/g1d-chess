@@ -1,18 +1,19 @@
 #!/usr/bin/env python3
 
-"""
-Pose error utilities for SE(3) inverse kinematics.
-"""
-
+import numpy as np
 import pinocchio as pin
 
 
-def pose_error(current, target):
-    """
-    Compute a 6D error vector between two SE(3) poses.
+def se3_from_xyz_quat(position_xyz, orientation_xyzw):
+    x, y, z, w = orientation_xyzw
+    quat = pin.Quaternion(w, x, y, z)
+    quat.normalize()
 
-    Returns:
-        [dx, dy, dz, rx, ry, rz]
-    """
-    err = pin.log6(current.inverse() * target)
-    return err.vector
+    return pin.SE3(
+        quat.toRotationMatrix(),
+        np.asarray(position_xyz, dtype=float),
+    )
+
+
+def pose_error(current, target):
+    return pin.log6(current.inverse() * target).vector
