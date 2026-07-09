@@ -14,6 +14,7 @@ from perception.factory import make_board_recognizer
 from hardware.g1d.factory import make_g1d_controller
 from planning.chess_plan import make_chess_move_plan
 from planning.executor import execute_commands
+from planning.safety_gate import require_real_robot_confirmation
 
 
 def main():
@@ -23,7 +24,10 @@ def main():
     parser.add_argument("--camera", type=int, default=None)
     parser.add_argument("--interface", default="eth0")
     parser.add_argument("--use-ik", action="store_true")
+    parser.add_argument("--allow-real", action="store_true")
     args = parser.parse_args()
+
+    require_real_robot_confirmation(args.backend, args.allow_real)
 
     scene = load_config("configs/scene.yaml")["scene"]
 
